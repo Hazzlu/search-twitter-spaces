@@ -1,0 +1,110 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#title {
+  color: aliceblue;
+}
+
+#textBox {
+  border: none;
+  background-color: transparent;
+  width: 100vh;
+  color: aliceblue;
+  font-size: 250%;
+}
+
+input::placeholder {
+  color: aliceblue;
+}
+
+#textBox:focus {
+  outline: none;
+  caret-color: aliceblue;
+}
+
+#searchButton {
+  width: 23px;
+}
+
+#search {
+  border-bottom: solid;
+  display: inline-block;
+  border-color: aliceblue;
+}
+
+#radioBox {
+  color: aliceblue;
+  margin-bottom: 20px;
+}
+
+body {
+  height: 70vh;
+  background-color: skyblue;
+}
+
+
+#icon {
+  float: left;
+}
+
+.accountInf {
+  margin-left: 20px;
+}
+
+.name {
+  text-align: left; 
+  margin-left: 10px;
+}
+
+.card {
+  border-top: 1.5px solid;
+  padding: 10px;
+  margin-left: 150px;
+  margin-right: 150px;
+  background-color: aliceblue;
+
+}
+
+.space {
+  margin: 5px;
+  border-radius: 10px; 
+  background-color: blueviolet;
+  border: 1.5px solid;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 5px;
+}
+.spaceT {
+  color: aliceblue;
+  text-align: center;
+  font-size: 25px;
+}
+
+.url {
+  color: aliceblue;
+  text-decoration: none;
+  border: 1.5px solid;
+  border-radius: 10px; 
+  border-color: aliceblue;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.number {
+  text-align: left;
+  margin-left: 20px;
+}
+
+#foot {
+  margin-left: 150px;
+  margin-right: 150px;
+  border-top: 1.5px solid;
+  height: 50px;
+}
+
+#resulutnum {
+  font-size: 20;
+}
