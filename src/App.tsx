@@ -7,7 +7,12 @@ import Sort from "./Sort";
 
 export default class App extends React.Component {
   
-  state= {twitter: [],
+  state= {twitter: [
+    <div>
+      β版となりますので、サイトの込み具合によっては検索できない場合があります。
+      <br/>
+      ご了承ください。
+    </div>],
           radio: "update",
           textValue: "",
           api: "http://localhost:5000/api/twitter?text=",
@@ -21,7 +26,8 @@ export default class App extends React.Component {
           username: [],
           profile_image_url: [],
           resultcount: 0,
-          interval: 5};
+          interval: 5,
+          bool: true};
 
   setSpaceinf() {
     var inf: Spaceinf = {
@@ -52,28 +58,40 @@ export default class App extends React.Component {
       this.setState({interval: 0});
       this.coolTime();
       const apiUrl = this.state.api + this.state.textValue;
-      await fetch(apiUrl,{ mode: 'cors' })
+        await fetch(apiUrl,{ mode: 'cors' })
             .then((response) => {
-              return response.json();
+                return response.json();     
             })
             .then((result) => {
               console.log(result)
-              this.setState({
-                creator_id: result.creator_id,
-                id: result.id,
-                participant_count: result.participant_count,
-                title: result.title,
-                updated_at: result.updated_at,
-                twname: result.name,
-                username: result.username,
-                profile_image_url: result.profile_image_url,
-                resultcount: result.meta
-              })
+              if(result.creator_id == undefined){
+                this.setState({
+                  twitter: [<div><span id = "error">※検索エラー※</span><br/>大変申し訳ございません。時間をおいてお試しください</div>],
+                  bool: false
+                })
+              }else {
+                this.setState({
+                  creator_id: result.creator_id,
+                  id: result.id,
+                  participant_count: result.participant_count,
+                  title: result.title,
+                  updated_at: result.updated_at,
+                  twname: result.name,
+                  username: result.username,
+                  profile_image_url: result.profile_image_url,
+                  resultcount: result.meta
+                })  
+              }
+                          
+
             })
             .catch(error => console.log('error', error));
       
-      this.dateChange();
-      this.sortswitch(this.state.radio);
+      if(this.state.bool) {
+        this.dateChange();
+        this.sortswitch(this.state.radio);
+      }
+      
     }
     
   }
@@ -120,6 +138,7 @@ export default class App extends React.Component {
         twitter: Sort(spaceinf,radioText),
         radio: radioText
       });
+  
     }
     
   }
@@ -166,9 +185,6 @@ export default class App extends React.Component {
         </div>
         {this.state.twitter}
         <div>
-          <br/>
-          ※検索ができなかった場合、時間をおいてお試しください。
-          <br/>
         </div>
       </div>
     );

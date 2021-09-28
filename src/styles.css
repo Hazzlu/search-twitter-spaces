@@ -106,5 +106,10 @@ body {
 }
 
 #resulutnum {
-  font-size: 20;
+  font-size: 20px;
+}
+
+#error {
+  color: red;
+  font-size: 20px;
 }
