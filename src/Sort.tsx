@@ -18,7 +18,7 @@ function updateSort(spaces: Spaceinf) {
     participant_count: [0],
     title: [""],
     updated_at: [""],
-    updated_at_dt: spaces.updated_at_dt,
+    updated_at_dt: [],
     twname: [""],
     username: [""],
     profile_image_url: [""],
@@ -33,6 +33,7 @@ function updateSort(spaces: Spaceinf) {
 
   for(let i = 0; i < inf.resultcount; i++){
     arraynum.push(i);
+    inf.updated_at_dt.push(spaces.updated_at_dt[i]);
   }
 
   
@@ -86,7 +87,7 @@ function numberSort(spaces: Spaceinf) {
   var inf: Spaceinf = {
     creator_id: [""],
     id: [""],
-    participant_count: spaces.participant_count,
+    participant_count: [],
     title: [""],
     updated_at: [""],
     updated_at_dt: [new Date()],
@@ -104,6 +105,7 @@ function numberSort(spaces: Spaceinf) {
 
   for(let i = 0; i < inf.resultcount; i++){
     arraynum.push(i);
+    inf.participant_count.push(spaces.participant_count[i]);
   }
 
   for(let i = 0; i < inf.resultcount; i++){
