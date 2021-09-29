@@ -58,7 +58,7 @@ export default class App extends React.Component {
       this.setState({interval: 0});
       this.coolTime();
       const apiUrl = this.state.api + this.state.textValue;
-        await fetch(apiUrl,{ mode: 'cors' })
+        await fetch(apiUrl,{ mode: 'no-cors' })
             .then((response) => {
                 return response.json();     
             })
