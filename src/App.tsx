@@ -85,7 +85,13 @@ export default class App extends React.Component {
                           
 
             })
-            .catch(error => console.log('error', error));
+            .catch(error => {
+              console.log('error', error);
+              this.setState({
+                twitter: [<div><span id = "error">※検索エラー※</span><br/>大変申し訳ございません。時間をおいてお試しください</div>],
+                bool: false
+              })
+          });
       
       if(this.state.bool) {
         this.dateChange();
