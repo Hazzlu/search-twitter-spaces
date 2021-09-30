@@ -96,7 +96,7 @@ function numberSort(spaces: Spaceinf) {
     profile_image_url: [""],
     resultcount: spaces.resultcount
   };
-
+  
   let arraynum =[];
   let sort = 0;
   let sortnum = 0;
