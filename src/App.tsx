@@ -64,7 +64,7 @@ export default class App extends React.Component {
             })
             .then((result) => {
               console.log(result)
-              if(result.creator_id == undefined){
+              if(result.meta == undefined){
                 this.setState({
                   twitter: [<div><span id = "error">※検索エラー※</span><br/>大変申し訳ございません。時間をおいてお試しください</div>],
                   bool: false
