@@ -34,7 +34,7 @@ function space(num : number, inf: Spaceinf) {
       </a>
   </div>
   <div className = "number">
-    更新日時: {inf.updated_at[num]}　ルーム人数: {inf.participant_count[num] + 1}人
+    更新日時: {inf.updated_at[num]}<br/>ルーム人数: {inf.participant_count[num] + 1}人
   </div>
 </div>
   );
