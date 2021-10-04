@@ -15,7 +15,7 @@ export default class App extends React.Component {
     </div>],
           radio: "update",
           textValue: "",
-          api: "https://master.drdpoi9qyrhhi.amplifyapp.com/api/twitter?text=",
+          api: "https://search-spaces-api.herokuapp.com/api/twitter?text=",
           creator_id: [],
           id: [],
           participant_count: [],
