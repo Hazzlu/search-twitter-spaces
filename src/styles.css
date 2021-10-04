@@ -35,6 +35,7 @@ input::placeholder {
   position: absolute;
   right: 2px;
   bottom: 8px;
+  z-index: 1;
 }
 #searchspace {
   margin-left: 100px;
