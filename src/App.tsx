@@ -15,7 +15,7 @@ export default class App extends React.Component {
     </div>],
           radio: "update",
           textValue: "",
-          api: "https://search-spaces-api.herokuapp.com/api/twitter?text=",
+          api: "https://master.drdpoi9qyrhhi.amplifyapp.com/api/twitter?text=",
           creator_id: [],
           id: [],
           participant_count: [],
@@ -156,22 +156,24 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1 id = "title">Twitter スペース検索(β版)</h1>
-        <form id="search">
-          <input
-            type="text"
-            placeholder="Type your search here"
-            value={this.state.textValue}
-            autoComplete="off"
-            onChange={(e) => this.setState({textValue: e.target.value})}
-            onKeyDown =  {(e) => this.keyDown(e)}
-            id="textBox"
-          ></input>
-          <img src={serchImg}
-            alt="search"
-            id="searchButton"
-            onClick={() => this.onClick()}
-             />
-        </form>
+        <div id="searchspace">
+          <form id="search">
+            <input
+              type="text"
+              placeholder="Type your search here"
+              value={this.state.textValue}
+              autoComplete="off"
+              onChange={(e) => this.setState({textValue: e.target.value})}
+              onKeyDown =  {(e) => this.keyDown(e)}
+              id="textBox"
+            ></input>
+            <img src={serchImg}
+              alt="search"
+              id="searchButton"
+              onClick={() => this.onClick()}
+               />
+          </form>
+        </div>
         <tr></tr>
         <div id = "radioBox">
           <label><input 
@@ -180,7 +182,7 @@ export default class App extends React.Component {
             value="update" 
             checked={this.state.radio == "update"}
             onChange={(e) => this.sortswitch(e.target.value)}
-          ></input>更新順</label>
+          ></input>更新順</label>　
           <label><input 
             type="radio" 
             name="tag" 
