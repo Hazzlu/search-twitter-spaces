@@ -122,7 +122,7 @@ export default class App extends React.Component {
         resultDate.push(new Date(ts + (9 * 60 * 60)));
         dateInf.push(
           resultDate[i].getFullYear() + "/" +  (resultDate[i].getMonth() + 1 )+ "/"+ resultDate[i].getDate()
-          + " " + resultDate[i].getHours() +  ":" + resultDate[i].getMinutes() + ":" + resultDate[i].getSeconds());
+          + " " + resultDate[i].getHours() +  ":" + resultDate[i].getMinutes());
       }
       this.setState({
         updated_at: dateInf,
