@@ -69,6 +69,11 @@ export default class App extends React.Component {
                   twitter: [<div><span id = "error">※検索エラー※</span><br/>大変申し訳ございません。時間をおいてお試しください</div>],
                   bool: false
                 })
+              }else if(result.meta == 0){
+                this.setState({
+                  twitter: [<div><span id = "error">※検索エラー※</span><br/>該当結果がありません</div>],
+                  bool: false
+                })
               }else {
                 this.setState({
                   creator_id: result.creator_id,
@@ -79,7 +84,8 @@ export default class App extends React.Component {
                   twname: result.name,
                   username: result.username,
                   profile_image_url: result.profile_image_url,
-                  resultcount: result.meta
+                  resultcount: result.meta,
+                  bool: true
                 })  
               }
                           
