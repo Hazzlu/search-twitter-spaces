@@ -1,5 +1,5 @@
 import "./styles.css";
-import serchImg from "./img/search.png";
+import searchImg from "./img/search.png";
 import React　from "react";
 import Spaceinf from "./Spaceinf";
 import Sort from "./Sort";
@@ -7,12 +7,13 @@ import Sort from "./Sort";
 
 export default class App extends React.Component {
   
-  state= {twitter: [
-    <div>
-      β版となりますので、サイトの込み具合によっては検索できない場合があります。
-      <br/>
-      ご了承ください。
-    </div>],
+  state = {
+          twitter: [
+            <div>
+              β版となりますので、サイトの込み具合によっては検索できない場合があります。
+              <br/>
+              ご了承ください。
+            </div>],
           radio: "update",
           textValue: "",
           api: "https://search-spaces-api.herokuapp.com/api/twitter?text=",
@@ -30,7 +31,7 @@ export default class App extends React.Component {
           bool: true};
 
   setSpaceinf() {
-    var inf: Spaceinf = {
+    let inf: Spaceinf = {
       creator_id: this.state.creator_id,
       id: this.state.id,
       participant_count: this.state.participant_count,
@@ -54,6 +55,9 @@ export default class App extends React.Component {
   }
 
   async onClick() {
+    this.setState({
+      twitter: [<div className="loader">Loading...</div>]
+    })
     if(this.state.interval >= 5) {
       this.setState({interval: 0});
       this.coolTime();
@@ -173,7 +177,7 @@ export default class App extends React.Component {
               onKeyDown =  {(e) => this.keyDown(e)}
               id="textBox"
             ></input>
-            <img src={serchImg}
+            <img src={searchImg}
               alt="search"
               id="searchButton"
               onClick={() => this.onClick()}
