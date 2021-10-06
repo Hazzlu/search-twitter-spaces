@@ -61,7 +61,6 @@ export default class App extends React.Component {
                 return response.json();     
             })
             .then((result) => {
-              console.log(result)
               if(result.meta == 0){
                 this.setState({
                   code: "no result",
@@ -85,7 +84,6 @@ export default class App extends React.Component {
 
             })
             .catch(error => {
-              console.log('error', error);
               this.setState({
                 code: "error",
                 bool: false
@@ -137,7 +135,6 @@ export default class App extends React.Component {
         radio: radioText
       });
     }else { 
-      console.log("sort change")
       this.setState({
         code: radioText,
         radio: radioText

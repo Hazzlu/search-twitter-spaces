@@ -2,7 +2,6 @@ import Spaceinf from "./Spaceinf";
 import Sort from "./Sort";
 
 export default function SystemMessage(code: string, inf: Spaceinf) {
-    console.log("System Message : " + code);
     if(code == "beginning") {
         return(
             <div>
