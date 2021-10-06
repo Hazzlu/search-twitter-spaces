@@ -25,14 +25,16 @@ function space(num : number, inf: Spaceinf) {
     <input type = "image" src = {inf.profile_image_url[num]} id = "icon"></input>
     <div className = "name"> {inf.twname[num]}<br/>(@{inf.username[num]}) </div>
   </div>
-  <div className = "space">
-    <div className = "spaceT">
-      {inf.title[num]}
-    </div>
-      <a  className = "url" href={spaceUrl}  target="_blank" rel="noopener noreferrer">
+  <a href={spaceUrl}  target="_blank" rel="noopener noreferrer">
+    <div className = "space">
+      <div className = "spaceT">
+        {inf.title[num]}
+      </div>
+      <div className = "listen">
         聞いてみる
-      </a>
-  </div>
+      </div>
+    </div>
+  </a>
   <div className = "number">
     更新日時: {inf.updated_at[num]}<br/>ルーム人数: {inf.participant_count[num] + 1}人
   </div>

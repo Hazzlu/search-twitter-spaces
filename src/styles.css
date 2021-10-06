@@ -92,7 +92,7 @@ input::placeholder {
   margin: 5px;
   border-radius: 10px; 
   background-color: blueviolet;
-  border: 1.5px solid;
+  border: black 1.5px solid;
   margin-bottom: 15px;
   margin-top: 15px;
   padding: 5px;
@@ -103,14 +103,19 @@ input::placeholder {
   font-size: 25px;
 }
 
-.url {
-  color: aliceblue;
+a:link, a:visited, a:hover, a:active {
   text-decoration: none;
+  color: aliceblue;
+}
+
+.listen {
+  color: aliceblue;
   border: 1.5px solid;
   border-radius: 10px; 
   border-color: aliceblue;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display:inline-block;
 }
 
 .number {
@@ -180,8 +185,11 @@ input::placeholder {
   }
   .name {
     font-size: 17px;
-
   }
+  .listen {
+    font-size: 17px;
+  }
+
 }
 
 @media screen and (max-width: 475px) {
@@ -237,7 +245,7 @@ input::placeholder {
   .name {
     font-size: 15px;
   }
-  .url {
+  .listen {
     font-size: 15px;
   }
 
@@ -294,9 +302,9 @@ input::placeholder {
     font-size: 13px;
   }
   .name {
-    font-size: 15px;
+    font-size: 13px;
   }
-  .url {
+  .listen {
     font-size: 13px;
   }
 }
