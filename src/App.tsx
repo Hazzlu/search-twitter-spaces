@@ -2,21 +2,15 @@ import "./styles.css";
 import searchImg from "./img/search.png";
 import React　from "react";
 import Spaceinf from "./Spaceinf";
-import Sort from "./Sort";
+import SystemMessage from "./SystemMessage";
 
 
 export default class App extends React.Component {
   
   state = {
-          twitter: [
-            <div>
-              β版となりますので、サイトの込み具合によっては検索できない場合があります。
-              <br/>
-              ご了承ください。
-            </div>],
+          code: "beginning",
           radio: "update",
           textValue: "",
-          api: "https://search-spaces-api.herokuapp.com/api/twitter?text=",
           creator_id: [],
           id: [],
           participant_count: [],
@@ -56,26 +50,21 @@ export default class App extends React.Component {
 
   async onClick() {
     this.setState({
-      twitter: [<div className="loader">Loading...</div>]
+      code: "loading"
     })
     if(this.state.interval >= 5) {
       this.setState({interval: 0});
       this.coolTime();
-      const apiUrl = this.state.api + this.state.textValue;
+      const apiUrl = "https://search-spaces-api.herokuapp.com/api/twitter?text=" + this.state.textValue;
         await fetch(apiUrl,{ mode: 'cors' })
             .then((response) => {
                 return response.json();     
             })
             .then((result) => {
               console.log(result)
-              if(result.meta == undefined){
+              if(result.meta == 0){
                 this.setState({
-                  twitter: [<div><span id = "error">※検索エラー※</span><br/>大変申し訳ございません。時間をおいてお試しください</div>],
-                  bool: false
-                })
-              }else if(result.meta == 0){
-                this.setState({
-                  twitter: [<div><span id = "error">※検索エラー※</span><br/>該当結果がありません</div>],
+                  code: "no result",
                   bool: false
                 })
               }else {
@@ -98,7 +87,7 @@ export default class App extends React.Component {
             .catch(error => {
               console.log('error', error);
               this.setState({
-                twitter: [<div><span id = "error">※検索エラー※</span><br/>大変申し訳ございません。時間をおいてお試しください</div>],
+                code: "error",
                 bool: false
               })
           });
@@ -147,11 +136,10 @@ export default class App extends React.Component {
       this.setState({
         radio: radioText
       });
-    }else {
-      var spaceinf = this.setSpaceinf();
-  
+    }else { 
+      console.log("sort change")
       this.setState({
-        twitter: Sort(spaceinf,radioText),
+        code: radioText,
         radio: radioText
       });
   
@@ -165,7 +153,7 @@ export default class App extends React.Component {
     
     return (
       <div className="App">
-        <h1 id = "title">Twitter スペース検索(β版)</h1>
+        <h1 id = "title">Twitterスペース検索(β版)</h1>
         <div id="searchspace">
           <form id="search">
             <input
@@ -201,7 +189,7 @@ export default class App extends React.Component {
             onChange={(e) => this.sortswitch(e.target.value)}
           ></input>ルーム人数順</label>
         </div>
-        {this.state.twitter}
+        {SystemMessage(this.state.code, this.setSpaceinf())}
         <div>
         </div>
       </div>

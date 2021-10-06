@@ -7,11 +7,8 @@ export default function Twitter(spaces : Spaceinf) {
   for(let i = 0; i < spaces.resultcount; i++){
     twitterList.push(space(i , spaces));
   }
-  if(spaces.resultcount == 0){
-    twitterList.push(<div>該当するスペースはありません。</div>)
-  }else {
-    twitterList.push(<div id = "foot"></div>);
-  }
+  twitterList.push(<div id = "foot"></div>);
+  
   return twitterList;
 }
 
