@@ -151,6 +151,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1 id = "title">Twitterスペース検索(β版)</h1>
+        <h2 id = "message">スペースのタイトルとホスト名で検索できます。</h2>
         <div id="searchspace">
           <form id="search">
             <input
