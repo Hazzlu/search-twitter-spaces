@@ -13,6 +13,10 @@ body {
 #title {
   color: aliceblue;
 }
+#message {
+  color: aliceblue;
+  font-size: 20px;
+}
 
 #textBox {
   border: none;
@@ -155,6 +159,9 @@ a:link, a:visited, a:hover, a:active {
     margin-right: 50px; 
   }
 
+  .system {
+    font-size: 17px;
+  }
   #textBox {
     font-size: 200%;
   }
@@ -169,6 +176,9 @@ a:link, a:visited, a:hover, a:active {
 
   #title {
     font-size: 23px;
+  }
+  #message {
+    font-size: 17px;
   }
   
   .spaceT {
@@ -207,6 +217,10 @@ a:link, a:visited, a:hover, a:active {
     margin-right: 25px; 
   }
 
+  .system {
+    font-size: 15px;
+  }
+
   #textBox {
     font-size: 150%;
   }
@@ -226,6 +240,10 @@ a:link, a:visited, a:hover, a:active {
   #title {
     font-size: 23px;
   }
+  #message {
+    font-size: 15px;
+  }
+
   #error {
     font-size: 15px;
   }
@@ -265,6 +283,9 @@ a:link, a:visited, a:hover, a:active {
     margin-left: 15px;
     margin-right: 15px; 
   }
+  .system {
+    font-size: 13px;
+  }
 
   #textBox {
     font-size: 125%;
@@ -285,6 +306,10 @@ a:link, a:visited, a:hover, a:active {
   #title {
     font-size: 21px;
   }
+  #message {
+    font-size: 13px;
+  }
+
   #error {
     font-size: 13px;
   }
