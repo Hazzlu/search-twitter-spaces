@@ -11,34 +11,38 @@ export default class App extends React.Component {
           code: "beginning",
           radio: "update",
           textValue: "",
-          creator_id: [],
-          id: [],
-          participant_count: [],
-          title: [],
-          updated_at: [],
-          updated_at_dt: [new Date()],
-          twname: [],
-          username: [],
-          profile_image_url: [],
-          resultcount: 0,
           interval: 5,
-          bool: true};
+          bool: true
+        };
 
-  setSpaceinf() {
-    let inf: Spaceinf = {
-      creator_id: this.state.creator_id,
-      id: this.state.id,
-      participant_count: this.state.participant_count,
-      title: this.state.title,
-      updated_at: this.state.updated_at,
-      updated_at_dt: this.state.updated_at_dt,
-      twname: this.state.twname,
-      username: this.state.username,
-      profile_image_url: this.state.profile_image_url,
-      resultcount: this.state.resultcount
-    };
-    return inf;
+  spaceinf: Spaceinf = {
+    creator_id: [],
+    id: [],
+    participant_count: [],
+    title: [],
+    updated_at: [],
+    updated_at_dt: [new Date()],
+    twname: [],
+    username: [],
+    profile_image_url: [],
+    resultcount: 0,
   }
+
+  // setSpaceinf() {
+  //   let inf: Spaceinf = {
+  //     creator_id: this.state.creator_id,
+  //     id: this.state.id,
+  //     participant_count: this.state.participant_count,
+  //     title: this.state.title,
+  //     updated_at: this.state.updated_at,
+  //     updated_at_dt: this.state.updated_at_dt,
+  //     twname: this.state.twname,
+  //     username: this.state.username,
+  //     profile_image_url: this.state.profile_image_url,
+  //     resultcount: this.state.resultcount
+  //   };
+  //   return inf;
+  // }
   
 
   keyDown(event: any) {
@@ -55,7 +59,7 @@ export default class App extends React.Component {
     if(this.state.interval >= 5) {
       this.setState({interval: 0});
       this.coolTime();
-      const apiUrl = "https://search-spaces-api.herokuapp.com/api/twitter?text=" + this.state.textValue;
+      const apiUrl = "http://localhost:5000/api/twitter?text=" + this.state.textValue;
         await fetch(apiUrl,{ mode: 'cors' })
             .then((response) => {
                 return response.json();     
@@ -67,16 +71,25 @@ export default class App extends React.Component {
                   bool: false
                 })
               }else {
-                this.setState({
-                  creator_id: result.creator_id,
-                  id: result.id,
-                  participant_count: result.participant_count,
-                  title: result.title,
-                  updated_at: result.updated_at,
-                  twname: result.name,
-                  username: result.username,
-                  profile_image_url: result.profile_image_url,
-                  resultcount: result.meta,
+                this.spaceinf.creator_id = result.creator_id;
+                this.spaceinf.id = result.id;
+                this.spaceinf.participant_count = result.participant_count;
+                this.spaceinf.title = result.title;
+                this.spaceinf.updated_at = result.updated_at
+                this.spaceinf.twname = result.name;
+                this.spaceinf.username = result.username,
+                this.spaceinf.profile_image_url = result.profile_image_url,
+                this.spaceinf.resultcount = result.meta,
+                console.log("spaceinf : " + this.spaceinf.creator_id);
+                console.log("spaceinf : " + this.spaceinf.id);
+                console.log("spaceinf : " + this.spaceinf.participant_count);
+                console.log("spaceinf : " + this.spaceinf.title);
+                console.log("spaceinf : " + this.spaceinf.updated_at);
+                console.log("spaceinf : " + this.spaceinf.twname);
+                console.log("spaceinf : " + this.spaceinf.profile_image_url);
+                console.log("spaceinf : " + this.spaceinf.resultcount);
+
+                this.setState({                  
                   bool: true
                 })  
               }
@@ -111,26 +124,28 @@ export default class App extends React.Component {
 
   dateChange() {
    
-    if(this.state.resultcount != 0){
+    if(this.spaceinf.resultcount != 0){
       var resultDate = [];
       var dateInf = [];
-      for(let i = 0; i < this.state.updated_at.length; i++){
-        var ts = Date.parse(this.state.updated_at[i]);
+      for(let i = 0; i < this.spaceinf.updated_at.length; i++){
+        var ts = Date.parse(this.spaceinf.updated_at[i]);
         resultDate.push(new Date(ts + (9 * 60 * 60)));
         dateInf.push(
           resultDate[i].getFullYear() + "/" +  (resultDate[i].getMonth() + 1 )+ "/"+ resultDate[i].getDate()
           + " " + resultDate[i].getHours() +  ":" + resultDate[i].getMinutes());
       }
-      this.setState({
-        updated_at: dateInf,
-        updated_at_dt: resultDate
-      }); 
+      this.spaceinf.updated_at = dateInf;
+      this.spaceinf.updated_at_dt = resultDate;
+      // this.setState({
+      //   updated_at: dateInf,
+      //   updated_at_dt: resultDate
+      // }); 
     }
   }
   
   
   sortswitch(radioText : string) {
-    if(this.state.resultcount == 0){
+    if(this.spaceinf.resultcount == 0){
       this.setState({
         radio: radioText
       });
@@ -187,7 +202,7 @@ export default class App extends React.Component {
             onChange={(e) => this.sortswitch(e.target.value)}
           ></input>ルーム人数順</label>
         </div>
-        {SystemMessage(this.state.code, this.setSpaceinf())}
+        {SystemMessage(this.state.code, this.spaceinf)}
         <div>
         </div>
       </div>
